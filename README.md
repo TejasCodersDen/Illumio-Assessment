@@ -90,6 +90,7 @@ Upon execution, the program generates two output files in the `output` directory
 
 ### Tested Scenarios
 
+- **File format Testing:** Lines that do match the flow-log format are skipped, lookup table with a wrong format raise a custom error and logs the error in the log file within the log folder.
 - **Tagging Accuracy:** Verified that flow logs are accurately matched against the lookup table and categorized by tag.
 - **Handling Edge Cases:** Ensured that unmatched entries are correctly categorized as "Untagged."
 - **Case Insensitivity:** Confirmed that protocol matching is case insensitive.
