@@ -32,7 +32,7 @@ class FlowLogParser(AbstractLogParser):
                 for row in reader:
                     if len(row) == 3:
                         dstport, protocol, tag = row
-                        lookup_dict[(dstport.strip(), protocol.strip().lower())] = tag.strip().lower()
+                        lookup_dict[(dstport.strip(), protocol.strip().lower())] = tag.strip()
                     else:
                         logging.error(f"Invalid Lookup Table Entry: {row}")
                         raise InvalidLookupTableEntry(row)
@@ -85,7 +85,7 @@ class FlowLogParser(AbstractLogParser):
             '17' : 'udp'
         }
 
-        return protocol_map.get(protocol_number, 'unknown')
+        return protocol_map.get(protocol_number, 'unmapped')
 
     def write(self, tag_count, port_protocol_count, untagged_count, tag_counts_file, port_protocol_counts_file):
         """
